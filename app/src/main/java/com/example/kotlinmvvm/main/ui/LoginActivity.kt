@@ -27,10 +27,12 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>(
         }
 
         mViewModel.loginLiveData.observe(this) {
-            if (it == null) {
-
-                return@observe
-            }
+//            if (it == null) {
+//
+//                return@observe
+//            }
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

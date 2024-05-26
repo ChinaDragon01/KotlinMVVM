@@ -7,12 +7,15 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.baselib.base.BaseAndroidViewModel
 import com.example.baselib.bean.UserInfoBean
 import com.example.baselib.impl.NoMultiClickListener
 import com.example.baselib.utils.ToastUtil
 import com.example.kotlinmvc.main.respository.LoginRepository
 import com.example.kotlinmvvm.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  *Author: chinadragonz
@@ -23,7 +26,7 @@ class LoginViewModel(application: Application) :
     val pwd = ObservableField<String>()
     val username = ObservableField<String>()
     val btnLoginEnable = ObservableBoolean(false)
-    val btnLoginEnabletBackgroundResId = ObservableInt(getColor(R.color.color_aaa))
+//    val btnLoginBackgroundResId = ObservableInt(getColor(R.color.color_aaa))
     val loginLiveData = MutableLiveData<UserInfoBean>()
 
     private val observableCallBack: Observable.OnPropertyChangedCallback =
@@ -43,11 +46,11 @@ class LoginViewModel(application: Application) :
         val pwd = pwd.get()
         if (userName.isNullOrBlank() || pwd.isNullOrBlank()) {
             btnLoginEnable.set(false)
-            btnLoginEnabletBackgroundResId.set(getColor(R.color.color_aaa))
+//            btnLoginBackgroundResId.set(getColor(R.color.color_aaa))
             return
         }
         btnLoginEnable.set(true)
-        btnLoginEnabletBackgroundResId.set(getColor(R.color.black))
+//        btnLoginBackgroundResId.set(getColor(R.color.black))
     }
 
     fun loginClick(view: View) {
@@ -64,13 +67,19 @@ class LoginViewModel(application: Application) :
 
     fun login(username: String, pwd: String) {
         val map = mapOf("username" to username, "password" to pwd)
-        launchApiCall({ repository.login(map) }, {
+        //模拟登录
+        viewModelScope.launch {
+            delay(400)
+            loginLiveData.value = null
+        }
+
+        /*launchApiCall({ repository.login(map) }, {
             if (it.data == null) {
                 return@launchApiCall
             }
             loginLiveData.postValue(it.data)
         }, {
             loginLiveData.value = null
-        })
+        })*/
     }
 }

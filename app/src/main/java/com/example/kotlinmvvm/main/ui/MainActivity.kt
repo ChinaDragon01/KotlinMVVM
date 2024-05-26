@@ -9,6 +9,7 @@ import com.example.kotlinmvvm.BR
 import com.example.kotlinmvvm.R
 import com.example.kotlinmvvm.community.ui.CommunityFragment
 import com.example.kotlinmvvm.databinding.ActivityMainBinding
+import com.example.kotlinmvvm.home.ui.HomeFragment
 import com.example.kotlinmvvm.main.adpater.MainPageAdapter
 import com.example.kotlinmvvm.main.model.MainViewModel
 import com.example.kotlinmvvm.mine.ui.MineFragment
@@ -23,7 +24,7 @@ class MainActivity :
     override fun initData() {
         super.initData()
         val fragmentList =
-            listOf<Fragment>(CommunityFragment(), MineFragment())
+            listOf<Fragment>(HomeFragment.creatHomeFragment(),CommunityFragment(), MineFragment())
         mainPageAdapter = MainPageAdapter(this, fragmentList)
     }
 
