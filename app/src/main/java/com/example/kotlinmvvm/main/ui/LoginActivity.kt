@@ -3,7 +3,6 @@ package com.example.kotlinmvvm.main.ui
 import android.content.Intent
 import com.example.baselib.base.BaseActivity
 import com.example.baselib.impl.NoMultiClickListener
-import com.example.baselib.utils.ToastUtil
 import com.example.kotlinmvvm.BR
 import com.example.kotlinmvvm.R
 import com.example.kotlinmvvm.databinding.ActivityLoginBinding

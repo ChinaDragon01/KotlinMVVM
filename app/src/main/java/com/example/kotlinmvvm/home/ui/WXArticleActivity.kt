@@ -1,6 +1,5 @@
 package com.example.kotlinmvvm.home.ui
 
-import androidx.activity.viewModels
 import com.example.baselib.base.BaseActivity
 import com.example.kotlinmvvm.BR
 import com.example.kotlinmvvm.R

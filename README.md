@@ -43,9 +43,14 @@
 
 ### 提醒
 
-> - 网络框架1：retrofit2 + 协程 进行网络请求以及数据处理
->- 网络框架2：retrofit2 + Rxjava3 + rxandroid
 >- 开启Databinding数据绑定仍需要在模块中启用 kapt。在使用数据绑定的模块中，不能移除 kapt。
+>- 创建ViewModel方式
+   > 在BaseActivity和BaseFragment里统一通过ViewModelProvider创建ViewModel
+>- 如果没有封装成统一的方式，独立创建ViewModel
+   >在gradle里依赖androidx.activity:activity-ktx:xxx
+   >在Activity里，可以通过 by viewModels()
+   >在gradle里依赖androidx.fragment:fragment-ktx:xxx
+   >在Fragment里，可以通过 by activityViewModels()
 
 ### 遇到的问题
 
