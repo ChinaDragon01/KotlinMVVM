@@ -20,10 +20,10 @@ import com.example.kotlinmvvm.R
  */
 class LoginViewModel(application: Application) :
     BaseAndroidViewModel<LoginRepository>(application) {
-    var pwd = ObservableField<String>()
-    var username = ObservableField<String>()
+    val pwd = ObservableField<String>()
+    val username = ObservableField<String>()
     val btnLoginEnable = ObservableBoolean(false)
-    var btnLoginEnabletBackgroundResId = ObservableInt(getColor(R.color.color_aaa))
+    val btnLoginEnabletBackgroundResId = ObservableInt(getColor(R.color.color_aaa))
     val loginLiveData = MutableLiveData<UserInfoBean>()
 
     private val observableCallBack: Observable.OnPropertyChangedCallback =
