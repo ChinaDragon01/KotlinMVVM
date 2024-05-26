@@ -53,7 +53,6 @@ abstract class BaseActivity<VM : BaseAndroidViewModel<*>, VDB : ViewDataBinding>
 
         type?.let {
             mViewModel = ViewModelProvider(this)[it]
-            mViewModel = ViewModelProvider(this)[it]
             if (::mViewModel.isInitialized) {
 
             }
