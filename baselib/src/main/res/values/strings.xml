@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">KotlinMVVM</string>
+    <string name="main_home">首页</string>
+    <string name="main_community">社群</string>
+    <string name="main_mine">我的</string>
+    <string name="input_account_hint">请输入1~20个字符的用户名</string>
+    <string name="input_pwd_hint">请输入8~16位的密码</string>
+    <string name="login">登录</string>
+    <string name="lookWXArticle">LookWXArticle</string>
+    <string name="login_error_tip">请输入正确的用户名或密码</string>
+</resources>
