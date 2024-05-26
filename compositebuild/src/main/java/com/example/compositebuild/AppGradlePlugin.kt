@@ -58,10 +58,10 @@ class AppGradlePlugin : Plugin<Project> {
             }
 
             //app里 依赖了 baselib
-//            dependencies {
+            dependencies {
 //                coreLib()
-//                testLib()
-//            }
+                testLib()
+            }
         }
     }
 }
