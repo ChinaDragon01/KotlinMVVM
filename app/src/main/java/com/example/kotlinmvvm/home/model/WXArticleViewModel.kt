@@ -38,26 +38,29 @@ class WXArticleViewModel(application: Application) :
         })
 
         //演示使用rxjava3
-//        wrapObservable(repository.wxArticle2()).subscribe(object :
-//            Observer<ApiResponse<List<WXArticleBean>?>> {
-//            override fun onSubscribe(d: Disposable) {
-//                listDisposable.add(d)
-//            }
-//
-//            override fun onError(e: Throwable) {
-//            }
-//
-//            override fun onComplete() {
-//            }
-//
-//            override fun onNext(response: ApiResponse<List<WXArticleBean>?>) {
-//                if (response.data == null) {
-//                    return
-//                }
-//                wxArticleAdapter.get()?.setData(response.data!!)
-//
-//            }
-//
-//        })
+        /*wrapObservable(repository.wxArticle2()).subscribe(object :
+            Observer<ApiResponse<List<WXArticleBean>?>> {
+            override fun onSubscribe(d: Disposable) {
+                listDisposable.add(d)
+            }
+
+            override fun onError(e: Throwable) {
+                wxArticleLiveData.postValue(false)
+            }
+
+            override fun onComplete() {
+                wxArticleLiveData.postValue(true)
+            }
+
+            override fun onNext(response: ApiResponse<List<WXArticleBean>?>) {
+                wxArticleLiveData.postValue(true)
+                if (response.data == null) {
+                    return
+                }
+                wxArticleAdapter.get()?.setData(response.data!!)
+
+            }
+
+        })*/
     }
 }

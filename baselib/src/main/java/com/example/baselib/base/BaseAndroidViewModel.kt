@@ -14,8 +14,10 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  *Author: chinadragon
@@ -45,21 +47,25 @@ open class BaseAndroidViewModel<Repository : BaseRepository>(application: Applic
         exceptionCallBack: suspend CoroutineScope.() -> Unit = {},
         showToast: Boolean = true,
     ) {
-        val job = viewModelScope.launch {
+        val job = viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = apiCall()
-                if (response.errorCode == HttpsConstant.NET_SUCCESS) {
-                    successCallBack(response)
+                withContext(Dispatchers.Main) {
+                    if (response.errorCode == HttpsConstant.NET_SUCCESS) {
+                        successCallBack(response)
 
-                } else {
-                    errorCallBack(response)
-                    if (showToast) {
-                        ToastUtil.show(response.errorMsg)
+                    } else {
+                        errorCallBack(response)
+                        if (showToast) {
+                            ToastUtil.show(response.errorMsg)
+                        }
                     }
                 }
-            } catch (e: Exception) {
-                exceptionCallBack()
 
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    exceptionCallBack()
+                }
             }
         }
 

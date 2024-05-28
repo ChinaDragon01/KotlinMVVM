@@ -15,13 +15,12 @@ class WXArticleActivity : BaseActivity<WXArticleViewModel, ActivityWxarticleBind
     BR.mWXArticleViewModel
 ) {
     override fun loadData() {
-        super.loadData()
+        binding.swipeRefresh.isRefreshing = true
         mViewModel.wxArticle()
     }
 
     override fun initEvent() {
         super.initEvent()
-        binding.swipeRefresh.isRefreshing = false
         binding.swipeRefresh.setOnRefreshListener {
             loadData()
         }

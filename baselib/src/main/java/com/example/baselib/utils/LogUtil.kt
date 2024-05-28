@@ -8,11 +8,17 @@ import com.example.baselib.constant.GlobalConstant.PRINGT_LOG
  *Time: 2024/2/18 09:48
  */
 object LogUtil {
+
     fun i(text: String?) {
-        i(text)
+        if (text.isNullOrEmpty()) {
+            return
+        }
+        if (PRINGT_LOG) {
+            Log.i("==", text)
+        }
     }
 
-    fun i(tag: String = "==", text: String?) {
+    fun i(tag: String, text: String?) {
         if (text.isNullOrEmpty()) {
             return
         }
